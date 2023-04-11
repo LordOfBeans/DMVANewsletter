@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			#content {
+				width: 100%;
+				border-top: 1px solid black;
+				border-bottom: 1px solid black;
+			}
+
+			.editor {
+				border: 1px solid black;
+				background-color: #ccc;
+				padding: 5px;
+				margin: 5px;
+			}
+
+			textarea {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="edit">
+			<div id="spotlight_editors"></div>
+			<button onclick="addSpotlight()">Add Spotlight</button>
+			<div id="opportunity_editors"></div>
+			<button onclick="addOpportunity()">Add Opportunity</button>
+		</div>
+		<div id="content">
+			<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+			<div id="spotlights" style="padding: 10px;background-color: #ffffff; font-family: &quot;Montserrat&quot;, &quot;Gotham&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">
+			</div>
+			<div id="opportunities" style="padding: 10px; background-color: #224671; font-family: &quot;Montserrat&quot;, &quot;Gotham&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">
+			</div>
+			<div id="projects" style="padding: 10px; background-color: #ebebeb; font-family: &quot;Montserrat&quot;, &quot;Gotham&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">
+			</div>
+		</div>
+		<button onclick="copyOutput()">Copy HTML to Clipboard</button>
+		<template id="spotlight">
+			<div>
+				<img src="https://petapixel.com/assets/uploads/2019/09/USMC-Col.-Carl-Cooper.jpeg" alt="Volunteer spotlight image" style="width: 40%; display: block; margin: auto;"/>
+				<h1 style="font-size: 20px; margin: 3px 0; text-align: center; color: #2a578d;">Volunteer Spotlight</h1>
+				<p style="font-size: 16px; margin: 3px 0; text-align: center; color: #464646;">Laborum aperiam porro nulla molestias aut quia. Adipisci optio assumenda ex molestiae exercitationem blanditiis. Impedit soluta qui nesciunt quam et perspiciatis animi similique. Ea quia aut omnis sapiente. Aut praesentium hic harum est et sunt eveniet quasi.</p>
+			</div>
+		</template>
+		<template id="opportunity">
+			<div style="padding: 5px; overflow: auto;">
+				<img src="https://www.braunability.com/us/en/blog/mobility-solutions/gardening-tools-for-wheelchair-users/_jcr_content/root/responsivegrid/mediacopy/backgroundImg.coreimg.100.2040.jpeg/1597083910199/gardening-tools-for-wheelchair-users.jpeg" alt="Opportunity image" style="max-width:300px; float: left; margin: 0 10px;"/>
+				<h2 style="font-size: 20px; margin: 3px 0; color: #b8b7b4;">Opportunity</h2>
+				<h3 style="font-size: 12px; margin: 3px 0; color: #fafafa;">January 1, 1970</h3>
+				<p style="font-size: 16px; margin: 3px 0; color: #fafafa;">A ut omnis facere ad aut debitis. Deleniti quia aperiam dolores aut. Eum et et est. Aut sapiente tempore blanditiis.</p>
+			</div>
+		</template>
+		<template id="spotlight_editor">
+			<div class="spotlight_editor editor">
+				<input type="url" oninput="updateSpotlight(this)" value="Image URL"></input>
+				<button onclick="removeElement(this)">Remove Spotlight</button>
+				<textarea cols="100", rows="4" oninput="updateSpotlight(this)">Description</textarea>
+			</div>
+		</template>
+		<template id="opportunity_editor">
+			<div class="opportunity_editor editor">
+				<input type="url" oninput="updateOpportunity(this)" value="Image URL"></input>
+				<button onclick="removeElement(this)">Remove Opportunity</button>
+				<textarea cols="100", rows="4" oninput="updateOpportunity(this)">Description</textarea>
+			</div>
+		</template>
+		<script>
+			var items = 0;
+
+			function addSpotlight() {
+				items++;
+				const elem = document.getElementById("spotlight").content.cloneNode(true);
+				elem.firstElementChild.id = items;
+				document.getElementById("spotlights").appendChild(elem);
+				const edit = document.getElementById("spotlight_editor").content.cloneNode(true);
+				edit.firstElementChild.setAttribute("data-partner-id", items);
+				document.getElementById("spotlight_editors").appendChild(edit);
+			}
+
+			function updateSpotlight(input) {
+				const edit = input.parentElement;
+				const elem = document.getElementById(edit.getAttribute("data-partner-id"));
+				const new_src = edit.getElementsByTagName("input")[0].value;
+				elem.getElementsByTagName("img")[0].src = edit.getElementsByTagName("input")[0].value;
+				elem.getElementsByTagName("p")[0].innerHTML = edit.getElementsByTagName("textarea")[0].value;
+			}
+
+			function addOpportunity() {
+				items++;
+				const elem = document.getElementById("opportunity").content.cloneNode(true);
+				elem.firstElementChild.id = items;
+				document.getElementById("opportunities").appendChild(elem);
+				const edit = document.getElementById("opportunity_editor").content.cloneNode(true);
+				edit.firstElementChild.setAttribute("data-partner-id", items);
+				document.getElementById("opportunity_editors").appendChild(edit);
+			}
+
+			function removeElement(input) {
+				const edit = input.parentElement;
+				const elem = document.getElementById(edit.getAttribute("data-partner-id"));
+				elem.remove();
+				edit.remove();
+			}
+
+			function copyOutput() {
+				const content = document.getElementById("content");
+				const out = document.getElementById("output");
+				navigator.clipboard.writeText(content.innerHTML);
+			}
+
+		</script>
+	</body>
+</html>
+
