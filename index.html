@@ -15,7 +15,7 @@
 			}
 
 			.editor_holder {
-				margin: 10px;
+				margin: 5px;
 				padding: 5px;
 			}
 
@@ -45,6 +45,7 @@
 				padding: 3px;
 				border: 1px solid black;
 				font-family: "Helvetica Neue", sans-serif;
+				width: 250px;
 			}
 
 			#tutorial {
@@ -71,16 +72,18 @@
 	</head>
 	<body>
 		<div id="edit">
-			<div id="header_editor">
+			<div id="header_editor" data-partner-id="header" class="editor_holder">
+				<input data-selector="#left" type="text" value="Southwestern Veterans' Center" oninput="update(this)"></input>
+				<input data-selector="#right" type="text" value="Quarterly Newsletter" oninput="update(this)"></input>
 			</div>
 			<div id="spotlight_editors" class="editor_holder">
-				<button onclick="addSpotlight()">Add Spotlight</button>
+				<button data-section="spotlight" data-editor="spotlight_editor" onclick="add(this)">Add Spotlight</button>
 			</div>
 			<div id="opportunity_editors" class="editor_holder">
-				<button onclick="addOpportunity()">Add Opportunity</button>
+				<button data-section="opportunity" data-editor="opportunity_editor" onclick="add(this)">Add Opportunity</button>
 			</div>
 			<div id="project_editors" class="editor_holder">
-				<button onclick="addProject()">Add Project Recap</button>
+				<button data-section="project" data-editor="project_editor"onclick="add(this)">Add Project Recap</button>
 			</div>
 			<div id="footer_editor">
 			</div>
@@ -88,13 +91,10 @@
 		<div id="content">
 			<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900" rel="stylesheet">
 			<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-			<div>
-				<div style="display: inline-block;">
-					<img style="height: 40px; width: 40px;" src="https://www.dmva.pa.gov/PublishingImages/DMVA_Keystone-01.svg" alt="Department of Military and Veterans Affairs Logo">
-				</div>
-				<div style="display:inline-block; height: 40px; vertical-align: top;">
-					<span style="color: #003146; vertical-align: middle; line-height: 40px; font-size: 1rem; font-family: &quot;Montserrat&quot;, &quot;Gotham&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helve    tica, sans-serif;">Department of Military and Veterans Affairs</span>
-				</div>
+			<div id="header" style="min-height: 40px; overflow: auto;">
+				<img style="float: left; height: 40px; width: 40px;" src="https://www.dmva.pa.gov/PublishingImages/DMVA_Keystone-01.svg" alt="Department of Military and Veterans Affairs Logo">
+				<span id="left" style="float: left; padding: 0 4px 0 8px; color: #003146; vertical-align: middle; line-height: 40px; font-size: 1rem; font-family: &quot;Montserrat&quot;, &quot;Gotham&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">Southwestern Veterans' Center</span>
+				<span id="right" style="display: block; text-align: right; padding: 0 8px; color: #003146; vertical-align: middle; line-height: 40px; font-size: 1rem; font-family: &quot;Montserrat&quot;, &quot;Gotham&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">Quarterly Newsletter</span>
 			</div>
 			<div style="background-image: url(&quot;https://www.dmva.pa.gov/banners/flag_banner.jpg&quot;); background-size: cover; height: 200px;"></div>
 			<div id="spotlights" style="padding: 8px 16px; background-color: #ffffff; font-family: &quot;Montserrat&quot;, &quot;Gotham&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">
@@ -110,8 +110,8 @@
 			<h2>Dealing with Sections</h2>
 			<p>Use the buttons at the top of this page to add Spotlight, Opportunity, or Project Recap sections. To edit a section, change the text boxes at the top of the page that correspond to the section you want to edit. Any changes made to the text boxes will also be made to the display sample. If you ever want to remove a section, click the corresponding remove button.</p>
 			<h3>Editing Paragraphs</h3>
-			<p>To edit paragraphs, write or paste text into the large text boxes. Line breaks in paragraphs will not appear by default. If you want there to be a line breaks, write a &quot;&lt;br&gt;&quot; in the spot where you want a line break.</p>
-			<h3>Editing Images</h3>
+			<p>To edit text, write or paste text into the text boxes. If you don't want one of the text elements such as a date, remove all text from the corresponding text box. The element you don't want will no longer be displayed, although it can be brought back by adding new text to the text box. Also note that you will not be able to use line breaks in the small text boxes.</p>
+			<h3>Adding Images</h3>
 			<p> To change an image, paste the URL of the image you want to use into the text input. Note that images sent as attachments will not show up in an email. Images must be hosted somewhere online for them to show up in an email. If you're not sure where to host an image, consider using an image hosting website like <a href="https://imgur.com">Imgur</a>.</p>
 			<h4>Hosting Images On Imgur</h4>
 			<ol>
@@ -119,21 +119,23 @@
 				<li>Once you've signed up and logged in, click the &quot;New post&quot; button at the top left of the page. This should take you to an upload page.</li>
 				<li>Drag an image from your file system into the area that says &quot;Drop images here&quot;. Your post will be uploaded to Imgur and you should see a page like the one below.</li>
 				<li>Then, right click on the image and click "Copy Image Link" or a similar option depending on your browser.</li>
-				<li>Paste the link you've just copied into the appropriate Image URL box on this page. If the image shows up in the display area above, you've done everything correctly.</li>
+				<li>Paste the link you've just copied into the appropriate &quot;Image URL&quot; box on this page. If the image shows up in the display area above, you've done everything correctly.</li>
 				<li>To upload more images, go back to the Imgur home pack by clicking the logo in the top left.</li>
 				<li>Then, click &quot;New post&quot; again and repeat the process from step 3.</li>
 			</ol>
 			<img src="https://i.imgur.com/hazrAoz.png" alt="Screenshot of Imgur upload page"/>
+			<h4>Removing Images</h4>
+			<p>If you don't want to have an image in a section, clear the text in the &quot;Image URL&quot; box. The image and the associated alt text should completely disappear.</p>
 		</div>
 		<template id="spotlight">
-			<div style="padding: 8px 0; overflow: auto;">
+			<div data-parent="spotlights" style="padding: 8px 0; overflow: auto;">
 				<img src="https://www.dmva.pa.gov/paveteranshomes/Volunteer/PublishingImages/VolunteerCandyShop.jpg" alt="Volunteer spotlight image" style="max-width: 75%; max-height: 450px; display: block; margin: 0 auto 8px auto;"/>
 				<h1 style="font-size: 20px; margin: 3px 0; text-align: center; color: #2a578d;">Volunteer Spotlight</h1>
 				<p style="font-size: 16px; margin: 3px 0; text-align: center; color: #464646;">Laborum aperiam porro nulla molestias aut quia. Adipisci optio assumenda ex molestiae exercitationem blanditiis. Impedit soluta qui nesciunt quam et perspiciatis animi similique. Ea quia aut omnis sapiente. Aut praesentium hic harum est et sunt eveniet quasi.</p>
 			</div>
 		</template>
 		<template id="opportunity">
-			<div style="padding: 4px 0; overflow: auto;">
+			<div data-parent="opportunities" style="padding: 4px 0; overflow: auto;">
 				<img src="https://www.dmva.pa.gov/paveteranshomes/PublishingImages/BVH%20Accordion%20Items/Dietary%20Staff.jpg" alt="Opportunity image" style="max-width:300px; float: left; margin: 4px 12px 4px 0;"/>
 				<table style="width: 300px;"></table> <!-- A bit of a hack allows the paragraph to move below the image when there's not enough space -->
 				<h1 style="font-size: 20px; margin: 3px 0; color: #b8b7b4;">Opportunity</h1>
@@ -142,142 +144,91 @@
 			</div>
 		</template>
 		<template id="project">
-			<div style="padding: 4px 0; overflow: auto;">
+			<div data-parent="projects" style="padding: 4px 0; overflow: auto;">
 				<img src="https://www.dmva.pa.gov/paveteranshomes/PublishingImages/BVH%20Accordion%20Items/Volunteers.jpg" alt="Project recap image" style="max-width:300px; float: left; margin: 4px 12px 4px 0;"/>
 				<table style="width: 300px;"></table> <!-- A bit of a hack allows the paragraph to move below the image when there's not enough  space -->
 				<h1 style="font-size: 20px; margin: 3px 0; color: #2a578d;">Project Recap</h1>
+				<h6 style="font-size: 12px; margin: 3px 0; color: #000000;">January 1, 1970</h6>
 				<p style="font-size: 16px; margin: 3px 0; color: #000000;">Magnam dolor laborum fugit maxime. Veritatis alias voluptate rerum voluptas quibusdam animi rerum recusandae. Ea omnis unde incidunt culpa aut repellat.</p>
 			</div>
 		</template>
 		<template id="spotlight_editor">
 			<div class="editor">
-				<input type="text" oninput="updateSpotlight(this)" value="Volunteer Spotlight"></input>
-				<input type="url" oninput="updateSpotlight(this)" value="Image URL"></input>
-				<button onclick="removeElement(this)">Remove Spotlight</button>
-				<textarea cols="100", rows="4" oninput="updateSpotlight(this)">Description</textarea>
+				<input data-selector="h1" type="text" oninput="updateText(this)" value="Volunteer Spotlight"></input>
+				<input data-selector="img" type="url" oninput="updateImage(this)" value="Image URL"></input>
+				<button onclick="remove(this)">Remove Spotlight</button>
+				<textarea data-selector="p" cols="150" rows="4" oninput="updateText(this)">Description</textarea>
 			</div>
 		</template>
 		<template id="opportunity_editor">
 			<div class=" editor">
-				<input type="text" oninput="updateOpportunity(this)" value="Opportunity"></input>
-				<input type="url" oninput="updateOpportunity(this)" value="Image URL"></input>
-				<input type="text" oninput="updateOpportunity(this)" value="Date"></input>
-				<button onclick="removeElement(this)">Remove Opportunity</button>
-				<textarea cols="100", rows="4" oninput="updateOpportunity(this)">Description</textarea>
+				<input data-selector="h1" type="text" oninput="updateText(this)" value="Opportunity"></input>
+				<input data-selector="img" type="url" oninput="updateImage(this)" value="Image URL"></input>
+				<input data-selector="h6" type="text" oninput="updateText(this)" value="Date"></input>
+				<button onclick="remove(this)">Remove Opportunity</button>
+				<textarea data-selector="p" cols="150" rows="4" oninput="updateText(this)">Description</textarea>
 			</div>
 		</template>
 		<template id="project_editor">
 			<div class="editor">
-				<input type="text" oninput="updateProject(this)" value="Project Recap"></input>
-				<input type="url" oninput="updateProject(this)" value="Image URL"></input>
-				<button onclick="removeElement(this)">Remove Project</button>
-				<textarea cols="100", rows="4" oninput="updateProject(this)">Description</textarea>
+				<input data-selector="h1" type="text" oninput="updateText(this)" value="Project Recap"></input>
+				<input data-selector="img" type="url" oninput="updateImage(this)" value="Image URL"></input>
+				<input data-selector="h6" type="text" oninput="updateText(this)" value="Date"></input>
+				<button onclick="remove(this)">Remove Project</button>
+				<textarea data-selector="p" cols="150" rows="4" oninput="updateText(this)">Description</textarea>
 			</div>
 		</template>
 		<script>
 			var items = 0;
 
-			function addSpotlight() {
+			/* This implementation should keep the JavaScript and HTML fairly simple and adaptable, but it does come with some limitations.
+			 * Most notably, it requires a lot of data tags to kind of string parts of the HTML together. */
+
+			function add(input) {
+				const editor = document.getElementById(input.getAttribute("data-editor")).content.cloneNode(true);
+				editor.firstElementChild.setAttribute("data-partner-id", items);
+				input.parentElement.appendChild(editor);
+				const section = document.getElementById(input.getAttribute("data-section")).content.cloneNode(true);
+				section.firstElementChild.id = items
+				document.getElementById(section.firstElementChild.getAttribute("data-parent")).appendChild(section);
 				items++;
-				const elem = document.getElementById("spotlight").content.cloneNode(true);
-				elem.firstElementChild.id = items;
-				document.getElementById("spotlights").appendChild(elem);
-				const edit = document.getElementById("spotlight_editor").content.cloneNode(true);
-				edit.firstElementChild.setAttribute("data-partner-id", items);
-				document.getElementById("spotlight_editors").appendChild(edit);
 			}
 
-			function updateSpotlight(input) {
-				const edit = input.parentElement;
-				const elem = document.getElementById(edit.getAttribute("data-partner-id"));
-				const inputs = edit.getElementsByTagName("input");
-				const src = inputs[1].value;
-				const images = elem.getElementsByTagName("img");
-				if (src.length == 0) {
-					if (images.length != 0) {
-						images[0].remove();
-					}
-				} else {
-					if (images.length == 0) {
-						elem.insertAdjacentHTML("afterbegin",
-							"<img src=\"" + src + "\" alt=\"Volunteer Spotlight image\" style=\"max-width: 75%; max-height: 600px; display: block; margin: 0 auto 8px auto;\"/>"
-						);
-					} else {
-						images[0].src = src;
-					}
+			function updateText(input) {
+				const partner = document.getElementById(input.parentElement.getAttribute("data-partner-id")).querySelector(input.getAttribute("data-selector"));
+				checkDisplay(partner, input.value);				
+				const split = input.value.split("\n");
+				var nodes = [];
+				for (let i = 0; i < split.length; i++) {
+					nodes.push(document.createTextNode(split[i]));
+					nodes.push(document.createElement("br"));
 				}
-				elem.getElementsByTagName("h1")[0].innerHTML = inputs[0].value;
-				elem.getElementsByTagName("p")[0].innerHTML = edit.getElementsByTagName("textarea")[0].value;
+				partner.replaceChildren(...nodes);
 			}
 
-			function addOpportunity() {
-				items++;
-				const elem = document.getElementById("opportunity").content.cloneNode(true);
-				elem.firstElementChild.id = items;
-				document.getElementById("opportunities").appendChild(elem);
-				const edit = document.getElementById("opportunity_editor").content.cloneNode(true);
-				edit.firstElementChild.setAttribute("data-partner-id", items);
-				document.getElementById("opportunity_editors").appendChild(edit);
-			}
-	
-			function updateOpportunity(input) {
-				const edit = input.parentElement;
-				const elem = document.getElementById(edit.getAttribute("data-partner-id"));
-				const inputs = edit.getElementsByTagName("input");
-				const src = inputs[1].value;
-				const images = elem.getElementsByTagName("img");
-				if (src.length == 0) {
-					if (images.length != 0) {
-						images[0].remove();
-					}
-				} else {
-					if (images.length == 0) {
-						elem.insertAdjacentHTML("afterbegin",
-							"<img src=\"" + src + "\" alt=\"Opportunity image\" style=\"max-width: 300px; float: left; margin: 4px 12px 4px 0;\"/>"
-						);
-					} else {
-						images[0].src = src;
-					}
-				}
-				elem.getElementsByTagName("h1")[0].innerHTML = inputs[0].value;
-				elem.getElementsByTagName("h6")[0].innerHTML = inputs[2].value;
-				elem.getElementsByTagName("p")[0].innerHTML = edit.getElementsByTagName("textarea")[0].value;
-			}
-	
-			function addProject() {
-				items++;
-				const elem = document.getElementById("project").content.cloneNode(true);
-				elem.firstElementChild.id = items;
-				document.getElementById("projects").appendChild(elem);
-				const edit = document.getElementById("project_editor").content.cloneNode(true);
-				edit.firstElementChild.setAttribute("data-partner-id", items);
-				document.getElementById("project_editors").appendChild(edit);
-			}
-	
-			function updateProject(input) {
-				const edit = input.parentElement;
-				const elem = document.getElementById(edit.getAttribute("data-partner-id"));
-				const inputs = edit.getElementsByTagName("input");
-				const src = inputs[1].value;
-				const images = elem.getElementsByTagName("img");
-				if (src.length == 0) {
-					if (images.length != 0) {
-						images[0].remove();
-					}
-				} else {
-					if (images.length == 0) {
-						elem.insertAdjacentHTML("afterbegin",
-							"<img src=\"" + src + "\" alt=\"Project recap image\" style=\"max-width: 300px; float: left; margin: 4px 12px 4px 0;\"/>"
-						);
-					} else {
-						images[0].src = src;
-					}
-				}
-				elem.getElementsByTagName("h1")[0].innerHTML = inputs[0].value;
-				elem.getElementsByTagName("p")[0].innerHTML = edit.getElementsByTagName("textarea")[0].value;
+			function updateImage(input) {
+				const partner = document.getElementById(input.parentElement.getAttribute("data-partner-id")).querySelector(input.getAttribute("data-selector"));
+				checkDisplay(partner, input.value);				
+				partner.src = input.value;
 			}
 
-			function removeElement(input) {
+			function checkDisplay(elem, value) {
+				if (value.length === 0) {
+					if (elem.getAttribute("data-display") === null) {
+						elem.setAttribute("data-display", elem.style.display);
+					}
+					elem.style.display = "none";
+				} else {
+					const disp = elem.getAttribute("data-display");
+					if (disp !== null) {
+						elem.style.display = disp;
+					}
+					elem.removeAttribute("data-display")
+				}
+
+			}
+
+			function remove(input) {
 				const edit = input.parentElement;
 				const elem = document.getElementById(edit.getAttribute("data-partner-id"));
 				elem.remove();
@@ -292,4 +243,3 @@
 		</script>
 	</body>
 </html>
-
