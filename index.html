@@ -73,8 +73,8 @@
 	<body>
 		<div id="edit">
 			<div id="header_editor" data-partner-id="header" class="editor_holder">
-				<input data-selector="#left" type="text" value="Southwestern Veterans' Center" oninput="update(this)"></input>
-				<input data-selector="#right" type="text" value="Quarterly Newsletter" oninput="update(this)"></input>
+				<input data-selector="#left" type="text" value="Southwestern Veterans' Center" oninput="updateText(this)"></input>
+				<input data-selector="#right" type="text" value="Quarterly Newsletter" oninput="updateText(this)"></input>
 			</div>
 			<div id="spotlight_editors" class="editor_holder">
 				<button data-section="spotlight" data-editor="spotlight_editor" onclick="add(this)">Add Spotlight</button>
@@ -83,15 +83,28 @@
 				<button data-section="opportunity" data-editor="opportunity_editor" onclick="add(this)">Add Opportunity</button>
 			</div>
 			<div id="project_editors" class="editor_holder">
-				<button data-section="project" data-editor="project_editor"onclick="add(this)">Add Project Recap</button>
+				<button data-section="project" data-editor="project_editor" onclick="add(this)">Add Project Recap</button>
 			</div>
-			<div id="footer_editor">
+			<div id="footer_editor" data-partner-id="footer" class="editor_holder">
+				Name: <input data-selector="#name" type="text" value="Brian Beach" oninput="updateText(this)"></input><br />
+				Title: <input data-selector="#title" type="text" value="Volunteer Resource Coodinator" oninput="updateText(this)"></input><br />
+				Center: <input data-selector="#center" type="text" value="Southwestern Veterans' Center" oninput="updateText(this)"></input><br />
+				Organization: <input data-selector="#organization" type="text" value="Department of Military and Veterans Affairs" oninput="updateText(this)"></input><br />
+				Address: <input data-selector="#address1" type="text" value="7060 Highland Drive" oninput="updateText(this)"></input>
+				<input data-selector="#address2" type="text" value="Pittsburgh PA, 15206" oninput="updateText(this)"></input><br />
+				Phone: <input data-selector="#phone" type="text" value="Phone: 412.665.6790" oninput="updateText(this)"></input>
+				<input data-selector="#phone" type="text" value="tel:4126656790" oninput="updateLink(this)"></input><br />
+				Email: <input data-selector="#email" type="text" value="Email: bribeach@pa.gov" oninput="updateText(this)"></input>
+				<input data-selector="#email" type="text" value="mailto: bribeach@pa.gov" oninput="updateLink(this)"></input><br />
+				Fax: <input data-selector="#fax" type="text" value="Fax: 412.665.6799" oninput="updateText(this)"></input><br />
+				Website: <input data-selector="#url" type="text" value="www.dmva.state.pa.us" oninput="updateText(this)"></input>
+				<input data-selector="#url" type="text" value="http://www.dmva.state.pa.us/" oninput="updateLink(this)"></input><br />
 			</div>
 		</div>
 		<div id="content">
 			<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900" rel="stylesheet">
 			<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-			<div id="header" style="min-height: 40px; overflow: auto;">
+			<div id="header" style="overflow: auto;">
 				<img style="float: left; height: 40px; width: 40px;" src="https://www.dmva.pa.gov/PublishingImages/DMVA_Keystone-01.svg" alt="Department of Military and Veterans Affairs Logo">
 				<span id="left" style="float: left; padding: 0 4px 0 8px; color: #003146; vertical-align: middle; line-height: 40px; font-size: 1rem; font-family: &quot;Montserrat&quot;, &quot;Gotham&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">Southwestern Veterans' Center</span>
 				<span id="right" style="display: block; text-align: right; padding: 0 8px; color: #003146; vertical-align: middle; line-height: 40px; font-size: 1rem; font-family: &quot;Montserrat&quot;, &quot;Gotham&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">Quarterly Newsletter</span>
@@ -102,6 +115,18 @@
 			<div id="opportunities" style="padding: 8px 16px; background-color: #224671; font-family: &quot;Montserrat&quot;, &quot;Gotham&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">
 			</div>
 			<div id="projects" style="padding: 8px 16px; background-color: #ebebeb; font-family: &quot;Montserrat&quot;, &quot;Gotham&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">
+			</div>
+			<div id="footer">
+				<span id="name" style="padding: 3px; display: block; text-align:center; color: #003146; font-size: 1rem; font-family: &quot;Montserrat&quot;, &quot;Gotham&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">Brian Beach</span>
+				<span id="title" style="padding: 3px; display: block; text-align:center; color: #003146; font-size: 1rem; font-family: &quot;Montserrat&quot;, &quot;Gotham&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">Volunteer Resource Coordinator</span>
+				<span id="center" style="padding: 3px; display: block; text-align:center; color: #003146; font-size: 1rem; font-family: &quot;Montserrat&quot;, &quot;Gotham&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">Southwestern Veterans' Center</span>
+				<span id="organization" style="padding: 3px; display: block; text-align:center; color: #003146; font-size: 1rem; font-family: &quot;Montserrat&quot;, &quot;Gotham&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">Department of Military and Veterans Affairs</span>
+				<span id="address1" style="padding: 3px; display: block; text-align:center; color: #003146; font-size: 1rem; font-family: &quot;Montserrat&quot;, &quot;Gotham&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">7060 Highland Drive</span>
+				<span id="address2" style="padding: 3px; display: block; text-align:center; color: #003146; font-size: 1rem; font-family: &quot;Montserrat&quot;, &quot;Gotham&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">Pittsburgh PA, 15206</span>
+				<a id="phone" href="tel:4126656790" style="padding: 3px; text-decoration-line: underline; display: block; text-align:center; color: #003146; font-size: 1rem; font-family: &quot;Montserrat&quot;, &quot;Gotham&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">Phone: 412.665.6790</a>
+				<a id="email" href="mailto:bribeach@pa.gov" style="padding: 3px; text-decoration-line: underline; display: block; text-align:center; color: #003146; font-size: 1rem; font-family: &quot;Montserrat&quot;, &quot;Gotham&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">Email: bribeach@pa.gov</a>
+				<span id="fax" style="padding: 3px; display: block; text-align:center; color: #003146; font-size: 1rem; font-family: &quot;Montserrat&quot;, &quot;Gotham&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">Fax: 412.665.6799</span>
+				<a id="url" href="http://www.dmva.state.pa.us/" style="padding: 3px; text-decoration-line: underline; display: block; text-align:center; color: #003146; font-size: 1rem; font-family: &quot;Montserrat&quot;, &quot;Gotham&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">www.dmva.state.pa.us</a>
 			</div>
 		</div>
 		<button onclick="copyOutput()">Copy to Clipboard</button>
@@ -137,7 +162,7 @@
 		<template id="opportunity">
 			<div data-parent="opportunities" style="padding: 4px 0; overflow: auto;">
 				<img src="https://www.dmva.pa.gov/paveteranshomes/PublishingImages/BVH%20Accordion%20Items/Dietary%20Staff.jpg" alt="Opportunity image" style="max-width:300px; float: left; margin: 4px 12px 4px 0;"/>
-				<table style="width: 300px;"></table> <!-- A bit of a hack allows the paragraph to move below the image when there's not enough space -->
+				<table style="width: 300px;"></table> <!-- A bit of a hack that allows the paragraph to move below the image when there's not enough space -->
 				<h1 style="font-size: 20px; margin: 3px 0; color: #b8b7b4;">Opportunity</h1>
 				<h6 style="font-size: 12px; margin: 3px 0; color: #fafafa;">January 1, 1970</h6>
 				<p style="font-size: 16px; margin: 3px 0; color: #fafafa;">A ut omnis facere ad aut debitis. Deleniti quia aperiam dolores aut. Eum et et est. Aut sapiente tempore blanditiis.</p>
@@ -146,14 +171,14 @@
 		<template id="project">
 			<div data-parent="projects" style="padding: 4px 0; overflow: auto;">
 				<img src="https://www.dmva.pa.gov/paveteranshomes/PublishingImages/BVH%20Accordion%20Items/Volunteers.jpg" alt="Project recap image" style="max-width:300px; float: left; margin: 4px 12px 4px 0;"/>
-				<table style="width: 300px;"></table> <!-- A bit of a hack allows the paragraph to move below the image when there's not enough  space -->
+				<table style="width: 300px;"></table> <!-- A bit of a hack that allows the paragraph to move below the image when there's not enough  space -->
 				<h1 style="font-size: 20px; margin: 3px 0; color: #2a578d;">Project Recap</h1>
 				<h6 style="font-size: 12px; margin: 3px 0; color: #000000;">January 1, 1970</h6>
 				<p style="font-size: 16px; margin: 3px 0; color: #000000;">Magnam dolor laborum fugit maxime. Veritatis alias voluptate rerum voluptas quibusdam animi rerum recusandae. Ea omnis unde incidunt culpa aut repellat.</p>
 			</div>
 		</template>
 		<template id="spotlight_editor">
-			<div class="editor">
+			<div data-parent="spotlight_editors" class="editor">
 				<input data-selector="h1" type="text" oninput="updateText(this)" value="Volunteer Spotlight"></input>
 				<input data-selector="img" type="url" oninput="updateImage(this)" value="Image URL"></input>
 				<button onclick="remove(this)">Remove Spotlight</button>
@@ -161,7 +186,7 @@
 			</div>
 		</template>
 		<template id="opportunity_editor">
-			<div class=" editor">
+			<div data-parent="opportunity_editors" class="editor">
 				<input data-selector="h1" type="text" oninput="updateText(this)" value="Opportunity"></input>
 				<input data-selector="img" type="url" oninput="updateImage(this)" value="Image URL"></input>
 				<input data-selector="h6" type="text" oninput="updateText(this)" value="Date"></input>
@@ -170,24 +195,21 @@
 			</div>
 		</template>
 		<template id="project_editor">
-			<div class="editor">
+			<div data-parent="project_editors" class="editor">
 				<input data-selector="h1" type="text" oninput="updateText(this)" value="Project Recap"></input>
 				<input data-selector="img" type="url" oninput="updateImage(this)" value="Image URL"></input>
 				<input data-selector="h6" type="text" oninput="updateText(this)" value="Date"></input>
-				<button onclick="remove(this)">Remove Project</button>
+				<button onclick="remove(this)">Remove Project Recap</button>
 				<textarea data-selector="p" cols="150" rows="4" oninput="updateText(this)">Description</textarea>
 			</div>
 		</template>
 		<script>
-			var items = 0;
-
-			/* This implementation should keep the JavaScript and HTML fairly simple and adaptable, but it does come with some limitations.
-			 * Most notably, it requires a lot of data tags to kind of string parts of the HTML together. */
+			var items = 0; // Used to assign IDs
 
 			function add(input) {
 				const editor = document.getElementById(input.getAttribute("data-editor")).content.cloneNode(true);
 				editor.firstElementChild.setAttribute("data-partner-id", items);
-				input.parentElement.appendChild(editor);
+				document.getElementById(editor.firstElementChild.getAttribute("data-parent")).appendChild(editor);
 				const section = document.getElementById(input.getAttribute("data-section")).content.cloneNode(true);
 				section.firstElementChild.id = items
 				document.getElementById(section.firstElementChild.getAttribute("data-parent")).appendChild(section);
@@ -197,6 +219,7 @@
 			function updateText(input) {
 				const partner = document.getElementById(input.parentElement.getAttribute("data-partner-id")).querySelector(input.getAttribute("data-selector"));
 				checkDisplay(partner, input.value);				
+				// Translate line breaks into break elements
 				const split = input.value.split("\n");
 				var nodes = [];
 				for (let i = 0; i < split.length; i++) {
@@ -212,6 +235,17 @@
 				partner.src = input.value;
 			}
 
+			function updateLink(input) {
+				const partner = document.getElementById(input.parentElement.getAttribute("data-partner-id")).querySelector(input.getAttribute("data-selector"));
+				if (input.value.length === 0) {
+					partner.style["text-decoration-line"] = "none";
+				} else {
+					partner.style["text-decoration-line"] = "underline";
+				}
+				partner.href = input.value;
+			}
+
+			// Displays element if and only if value is non-empty
 			function checkDisplay(elem, value) {
 				if (value.length === 0) {
 					if (elem.getAttribute("data-display") === null) {
@@ -225,7 +259,6 @@
 					}
 					elem.removeAttribute("data-display")
 				}
-
 			}
 
 			function remove(input) {
